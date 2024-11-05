@@ -34,7 +34,7 @@ const NavBar = () => {
            <li><Link to='/dashboard'>Pages to Read</Link></li>
           </ul>
         </div>
-        <a className="text-3xl font-bold cursor-pointer">daisyUI</a>
+        <a className="text-3xl font-bold cursor-pointer">Boi Poka</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu-horizontal px-1" id="navlink">

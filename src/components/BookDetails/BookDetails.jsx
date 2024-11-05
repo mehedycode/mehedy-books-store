@@ -1,4 +1,6 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { setBooksLocalStorage } from "../server/MarkAsRead";
+import { setWishListLocalStorage } from "../server/Wishlist";
 
 
 const BookDetails = () => {
@@ -21,6 +23,15 @@ const data = useLoaderData()
     rating,
     totalPages, image
   } = book;
+
+  const localStorageHandelar = (id) => {
+    setBooksLocalStorage(id)
+  }
+
+  const wishListHandelar = (id) => {
+
+    setWishListLocalStorage(id)
+  }
 
   return (
     <div className="hero">
@@ -71,8 +82,8 @@ const data = useLoaderData()
               <p className="font-bold">{rating}</p>
             </div>
           </div>
-          <button className="btn btn-outline">Mark As Read</button>
-          <button className="btn btn-primary bg-[#50B1C9] text-white border-none ml-7">
+          <button onClick={()=> localStorageHandelar(id)} className="btn btn-outline">Mark As Read</button>
+          <button onClick={()=> wishListHandelar(id)} className="btn btn-primary bg-[#50B1C9] text-white border-none ml-7">
            Add Wishlist
           </button>
         </div>

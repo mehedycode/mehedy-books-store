@@ -8,7 +8,9 @@ import Home from './components/Home/Home';
 import DashBoard from './components/DashBoard/DashBoard';
 import BookDetails from './components/BookDetails/BookDetails';
 import ReadWishlist from './components/ReadWishlist/ReadWishlist';
-
+ import { ToastContainer } from "react-toastify";
+ import "react-toastify/dist/ReactToastify.css";
+import { loggish } from './../node_modules/d3-scale/src/log';
 
 
 const router = createBrowserRouter([
@@ -23,11 +25,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/readsBook',
-        element: <ReadWishlist></ReadWishlist>
+        element: <ReadWishlist></ReadWishlist>,
+        loader: ()=> fetch('/Books.json')
       },
       {
         path: '/dashboard',
-        element: <DashBoard></DashBoard>
+        element: <DashBoard></DashBoard>,
+        
       },
       {
         path: '/books/:bookId',
@@ -43,5 +47,18 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <RouterProvider router={router} />
+
+    <ToastContainer
+      position="top-center"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="colored"
+    />
   </StrictMode>
 );
